@@ -12,6 +12,9 @@ const PORT = process.env.PORT || 4000;
 const mongoString = process.env.DATABASE_URL;
 const app = express();
 app.use(cors());
+app.options('/*', (_, res) => {
+  res.sendStatus(200);
+});
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(`/api`, router);
